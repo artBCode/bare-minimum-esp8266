@@ -1,0 +1,52 @@
+# The esp fails to boot if ANY of the following are true:
+# 0 LOW,
+# 1 LOW 
+# 2 LOw 
+# 15 HIGH
+
+
+# the following PINs are hight on boot:
+# 1, 2, 3, 9, 10, 16
+
+substitutions:
+  device_name: "test-esp01-e"
+  device_friendly_name: "Test Esp01 E"
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret test_esp01_e_api_key
+ota:
+  password: !secret test_esp01_e_ota_pass
+
+esphome:
+  name: ${device_name}
+
+esp8266:
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  domain: !secret wifi_domain
+  fast_connect: true
+  power_save_mode: none # none/LIGHT is the default option on esp8266/esp32
+  #  Used when renaming the device
+  #use_address: old_name
+
+sensor:    
+  - platform: uptime
+    name: ${device_friendly_name} Uptime Sensor
+    id: local_uptime
+    icon: mdi:clock-time-seven
+    update_interval: 30s
+    force_update: false
+
+light:
+  - platform: status_led
+    name: "${device_friendly_name} Integrated Led"
+    pin:
+      number: GPIO2
+      inverted: true
+
+    
