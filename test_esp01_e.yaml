@@ -1,12 +1,11 @@
 # The esp fails to boot if ANY of the following are true:
 # 0 LOW,
-# 1 LOW 
+# 1(TX) LOW 
 # 2 LOw 
-# 15 HIGH
 
 
 # the following PINs are hight on boot:
-# 1, 2, 3, 9, 10, 16
+# 1, 2, 3(RX)
 
 substitutions:
   device_name: "test-esp01-e"
