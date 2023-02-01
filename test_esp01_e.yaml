@@ -3,7 +3,6 @@
 # 1(TX) LOW 
 # 2 LOw 
 
-
 # the following PINs are hight on boot:
 # 1, 2, 3(RX)
 
@@ -47,5 +46,3 @@ light:
     pin:
       number: GPIO2
       inverted: true
-
-    
