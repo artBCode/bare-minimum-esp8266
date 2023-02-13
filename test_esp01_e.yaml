@@ -26,9 +26,13 @@ esp8266:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
-  domain: !secret wifi_domain
+  # domain: !secret wifi_domain
   fast_connect: true
   power_save_mode: none # none/LIGHT is the default option on esp8266/esp32
+  # if the controller fails to connect to the above wifi network then it will set up an access point
+  ap:
+    ssid: !secret test_esp01_e_ap_ssid
+    password: !secret test_esp01_e_ap_key
   #  Used when renaming the device
   #use_address: old_name
 
@@ -46,3 +50,5 @@ light:
     pin:
       number: GPIO2
       inverted: true
+
+    
